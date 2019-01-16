@@ -24,7 +24,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // K8s metadata as custom attributes
-var CUSTOM_PARAMETERS = {
+var CUSTOM_ATTRIBUTES = {
   'K8S_NODE_NAME': process.env.K8S_NODE_NAME,
   'K8S_HOST_IP': process.env.K8S_HOST_IP,
   'K8S_POD_NAME': process.env.K8S_POD_NAME,
@@ -34,7 +34,7 @@ var CUSTOM_PARAMETERS = {
   'K8S_POD_TIER': process.env.K8S_POD_TIER
 };
 app.use(function(req, res, next) {
-  newrelic.addCustomParameters(CUSTOM_PARAMETERS);
+  newrelic.addCustomAttributes(CUSTOM_ATTRIBUTES);
   next();
 });
 
@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  newrelic.noticeError(err, CUSTOM_PARAMETERS);
+  newrelic.noticeError(err, CUSTOM_ATTRIBUTES);
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
