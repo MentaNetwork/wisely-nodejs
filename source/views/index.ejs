@@ -8,9 +8,18 @@
   <body>
     <h1><%= title %></h1>
     <p>Bienvenido a <%= title %></p>
+    <ul>
+      <li><a href="/users">Usuarios</a></li>
+      <li><a href="/no-existe-esto">Liga rota</a></li>
+      <li><a href="/error">Error 500</a></li>
+    </ul>
     <iframe src="https://giphy.com/embed/mCRJDo24UvJMA" width="480" height="348" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
     <p>
-      <b>Host: <%= hostname %></b>
+      <b>Host: <%= hostname %> </b>
     </p>
+    <small>
+      Reportando a New Relic como "<%= process.env.NEW_RELIC_APP_NAME %>"
+      con licencia "<%= process.env.NEW_RELIC_LICENSE_KEY %>"
+    </small>
   </body>
 </html>

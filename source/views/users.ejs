@@ -11,8 +11,9 @@
     <h4>Timeout: <%= timeout %></h4>
     <ul>
       <% users.forEach(function(user) { %>
-      <li><%= user.name %></li>
+      <li><a href="/users/<%= user.id %>"><%= user.name %></a></li>
       <% }); %>
+      <li><a href="/users/1000000">Usuario inexisente</a></li>
     </ul>
     <p>
       <b>Host: <%= hostname %></b>

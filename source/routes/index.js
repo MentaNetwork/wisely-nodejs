@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/error', function(req, res, next) {
+  throw new Error('Esto es un error intencional de ejemplo');
+});
+
 module.exports = router;
